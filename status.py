@@ -23,7 +23,7 @@ def hostname():
     result["hostname"] = fetch("hostname")
 
 def ipaddr():
-    result["ip_address"] = fetch("ip address show eth0 | grep 'inet\b' | cut -d' ' -f6")
+    result["ip_address"] = fetch("ip address show eth0 | awk '/inet / {print $2}'")
 
 def cpus():
     result["cpus"] = fetch("grep -c '^processor' /proc/cpuinfo")
