@@ -20,7 +20,7 @@ def fetch(cmd):
     return (p.communicate()[0]).decode('ascii').strip()
 
 def hostname():
-    result["hostname"] = fetch("/usr/bin/hostname")
+    result["hostname"] = fetch("hostname")
 
 def ipaddr():
     result["ip_address"] = fetch("ip address show eth0 | grep 'inet\b' | cut -d' ' -f6")
