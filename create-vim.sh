@@ -4,7 +4,7 @@ GROUP=cmpu3055-lab2
 VM=cmpu3055-lab2-vm
 
 if ! az group list | grep -q ${GROUP}; then
-    az group create --name ${GROUP} --location eastus
+    az group create --name ${GROUP} --location eastus > /dev/null
 fi
 
 if ! az vm list | grep -q ${VM}; then
@@ -13,7 +13,7 @@ if ! az vm list | grep -q ${VM}; then
     --image UbuntuLTS \
     --generate-ssh-keys \
     --output json \
-    --verbose
+    --verbose > /dev/null
 fi
 
 NIC_ID=$(
@@ -36,3 +36,4 @@ VM_IP_ADDR=$(
 )
 
 echo ${VM_IP_ADDR}
+
